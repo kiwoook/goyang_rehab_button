@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import Modal from "react-modal";
+import button1 from './button1.png';
 
 const Score = styled.div`
   position: absolute;
@@ -30,6 +31,8 @@ const Image = styled.img`
 `;
 
 const Menu = styled.button`
+  width: 12%;
+  height: 8%;
   position: absolute;
   bottom: 5%;
   left: 5%;
@@ -62,9 +65,37 @@ const Menu = styled.button`
   -webkit-user-select: none;
   touch-action: manipulation;
   font-family: "Suez one", serif;
-
-
 `;
+
+const ModalButton = styled.button`
+  width: 50%;
+  height: 15%;
+  margin: 1rem;
+  align-items: center;
+  background-color: #fff;
+  border: 2px solid #000;
+  box-sizing: border-box;
+  color: #000;
+  cursor: pointer;
+  display: inline-flex;
+  fill: #000;
+  font-family: Inter,sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  letter-spacing: -.8px;
+  line-height: 24px;
+  min-width: 140px;
+  outline: 0;
+  padding: 0 1rem;
+  text-align: center;
+  text-decoration: none;
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+
+`
 
 function App() {
 
@@ -105,7 +136,8 @@ function App() {
           ariaHideApp={false}
         >
           <div className="Modal">
-            <button onClick={resetNumber}>초기화</button>
+            <ModalButton>구글 스프레드 시트로 보내기</ModalButton>
+            <ModalButton onClick={resetNumber}>초기화</ModalButton>
           </div>
         </Modal>
         <Score>TODAY : {number}</Score>
