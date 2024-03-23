@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.8f638829.css",
-    "main.js": "/static/js/main.ae8c6ee9.js",
-    "static/js/453.975e602f.chunk.js": "/static/js/453.975e602f.chunk.js",
-    "static/media/background-image.png": "/static/media/background-image.5cd5672d0d79aeff55c1.png",
-    "index.html": "/index.html",
-    "main.8f638829.css.map": "/static/css/main.8f638829.css.map",
-    "main.ae8c6ee9.js.map": "/static/js/main.ae8c6ee9.js.map",
-    "453.975e602f.chunk.js.map": "/static/js/453.975e602f.chunk.js.map"
+    "main.css": "/goyang_rehab_button/static/css/main.dcff9dde.css",
+    "main.js": "/goyang_rehab_button/static/js/main.99c0b584.js",
+    "static/js/453.975e602f.chunk.js": "/goyang_rehab_button/static/js/453.975e602f.chunk.js",
+    "static/media/background-image.png": "/goyang_rehab_button/static/media/background-image.5cd5672d0d79aeff55c1.png",
+    "index.html": "/goyang_rehab_button/index.html",
+    "main.dcff9dde.css.map": "/goyang_rehab_button/static/css/main.dcff9dde.css.map",
+    "main.99c0b584.js.map": "/goyang_rehab_button/static/js/main.99c0b584.js.map",
+    "453.975e602f.chunk.js.map": "/goyang_rehab_button/static/js/453.975e602f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8f638829.css",
-    "static/js/main.ae8c6ee9.js"
+    "static/css/main.dcff9dde.css",
+    "static/js/main.99c0b584.js"
   ]
 }
