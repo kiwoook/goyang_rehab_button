@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import Modal from "react-modal";
-import button1 from './button1.png';
+
 
 const Score = styled.div`
   position: absolute;
@@ -45,7 +45,7 @@ const Menu = styled.button`
   border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
   border-style: solid;
   border-width: 2px;
-  box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+  box-shadow: rgba(0, 0, 0, 0.2) 15px 28px 25px -18px;
   box-sizing: border-box;
   color: #41403e;
   cursor: pointer;
@@ -54,7 +54,7 @@ const Menu = styled.button`
   font-size: 1rem;
   line-height: 23px;
   outline: none;
-  padding: .75rem;
+  padding: 0.75rem;
   text-decoration: none;
   transition: all 235ms ease-in-out;
   border-bottom-left-radius: 15px 255px;
@@ -79,27 +79,25 @@ const ModalButton = styled.button`
   cursor: pointer;
   display: inline-flex;
   fill: #000;
-  font-family: Inter,sans-serif;
+  font-family: Inter, sans-serif;
   font-size: 16px;
   font-weight: 600;
   justify-content: center;
-  letter-spacing: -.8px;
+  letter-spacing: -0.8px;
   line-height: 24px;
   min-width: 140px;
   outline: 0;
   padding: 0 1rem;
   text-align: center;
   text-decoration: none;
-  transition: all .3s;
+  transition: all 0.3s;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+`;
 
-`
 
 function App() {
-
-  
   const [number, setNumber] = useState(0);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const showModal = () => {
@@ -114,6 +112,15 @@ function App() {
     setNumber(0);
   };
 
+  const onFullScreen = () => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+    } else {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      }
+    }
+  }
   useEffect(() => {
     const storedNumber = localStorage.getItem("number");
     if (storedNumber !== null) {
@@ -125,7 +132,6 @@ function App() {
     localStorage.setItem("number", number);
   }, [number]);
 
-
   return (
     <div className="Background">
       <div className="App">
@@ -136,8 +142,9 @@ function App() {
           ariaHideApp={false}
         >
           <div className="Modal">
-            <ModalButton>구글 스프레드 시트로 보내기</ModalButton>
+            <ModalButton >구글 스프레드 시트로 보내기</ModalButton>
             <ModalButton onClick={resetNumber}>초기화</ModalButton>
+            <ModalButton onClick={onFullScreen}>전체 화면</ModalButton>
           </div>
         </Modal>
         <Score>TODAY : {number}</Score>
