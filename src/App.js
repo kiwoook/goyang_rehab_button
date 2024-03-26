@@ -28,6 +28,10 @@ const Image = styled.img`
   height: 25vh;
   cursor: pointer;
   object-fit: fill;
+  &:focus{
+    outline: none;
+  }
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 `;
 
 const Menu = styled.button`
