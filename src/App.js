@@ -13,7 +13,7 @@ const Score = styled.div`
   font-size: 70px;
   font-family: "Suez one", serif;
   font-weight: 400;
-  color: white;
+  color: #5185d7;
 `;
 
 const StyledButton = styled(motion.div)`
