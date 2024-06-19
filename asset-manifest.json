@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/goyang_rehab_button/static/css/main.53e6a576.css",
-    "main.js": "/goyang_rehab_button/static/js/main.db85b51c.js",
+    "main.js": "/goyang_rehab_button/static/js/main.ab1612cf.js",
     "static/js/453.975e602f.chunk.js": "/goyang_rehab_button/static/js/453.975e602f.chunk.js",
     "static/media/background-image.png": "/goyang_rehab_button/static/media/background-image.20f7ad4b6a777018ba7b.png",
     "index.html": "/goyang_rehab_button/index.html",
     "main.53e6a576.css.map": "/goyang_rehab_button/static/css/main.53e6a576.css.map",
-    "main.db85b51c.js.map": "/goyang_rehab_button/static/js/main.db85b51c.js.map",
+    "main.ab1612cf.js.map": "/goyang_rehab_button/static/js/main.ab1612cf.js.map",
     "453.975e602f.chunk.js.map": "/goyang_rehab_button/static/js/453.975e602f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.53e6a576.css",
-    "static/js/main.db85b51c.js"
+    "static/js/main.ab1612cf.js"
   ]
 }
