@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import Modal from "react-modal";
@@ -6,6 +6,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import clickSound from "../sounds/click.mp3"
 
 const API_URL = process.env.REACT_APP_URL;
 
@@ -105,16 +106,20 @@ export const ModalButton = styled.button`
 
 const Main = () => {
   const navigate = useNavigate();
-
   const [number, setNumber] = useState(0);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const buttonSoundRef = useRef(new Audio(clickSound));
+
   const showModal = () => {
     setModalIsOpen(!modalIsOpen);
   };
 
   const onIncrease = () => {
+    const clickSound = buttonSoundRef.current;
+    clickSound.currentTime = 0;
+    clickSound.play();
     setNumber(number + 1);
   };
 
@@ -143,11 +148,11 @@ const Main = () => {
   const onDirectDashboard = () => {
     const password = prompt("비밀번호를 입력해주세요!");
     if (password === "1400") {
-        navigate("/dashboard");
-    }else{
-        alert("비밀번호 불일치!");
+      navigate("/dashboard");
+    } else {
+      alert("비밀번호 불일치!");
     }
-  }
+  };
 
   const onFullScreen = () => {
     if (!document.fullscreenElement) {
@@ -172,6 +177,7 @@ const Main = () => {
 
   return (
     <>
+  
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={showModal}
@@ -181,16 +187,14 @@ const Main = () => {
         <div className="Modal">
           <ModalButton onClick={sendNumber}>데이터 전송하기</ModalButton>
 
-          <ModalButton onClick={onDirectDashboard}>
-            대시보드 이동
-          </ModalButton>
+          <ModalButton onClick={onDirectDashboard}>대시보드 이동</ModalButton>
           <ModalButton onClick={resetNumber}>초기화</ModalButton>
           <ModalButton onClick={onFullScreen}>전체 화면</ModalButton>
         </div>
       </Modal>
       <Score>TODAY : {number}</Score>
       <StyledButton whileTap={{ scale: 1.5 }} onClick={onIncrease}>
-        <Image src= {`${process.env.PUBLIC_URL}/button1.png`} />
+        <Image src={`${process.env.PUBLIC_URL}/button1.png`} />
       </StyledButton>
       <Menu onClick={showModal} className="Menu">
         Menu
