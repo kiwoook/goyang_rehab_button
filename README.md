@@ -1,70 +1,47 @@
-# Getting Started with Create React App
+# 고양시 장애인 복지관 조회 현황 사이트
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+## 프로젝트 소개
+사회복무요원으로 복무 중, 사회복지사인 한 직원께서 네이버의 학습용 코딩 플랫폼 '엔트리'를 활용해 방문자 수를 측정하는 페이지를 개발하셨습니다. 그러나 해당 페이지는 새로고침 시 방문자 수가 초기화되며, 데이터를 매번 엑셀로 수동 전송해야 하는 불편함이 있었습니다.
 
-### `npm start`
+이 문제를 해결하기 위해,  페이지를 개선하는 프로젝트를 진행했습니다. 본 프로젝트의 목표는 방문자 수 데이터를 새로고침 후에도 유지하고, 이를 서버에 저장하여 추후 분석이 가능하도록 하는 것이었습니다. 이를 통해 해당 직원이 보다 효율적으로 업무를 수행할 수 있도록 지원하고자 했습니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 프로젝트 목표
+- **데이터 지속성 확보:** 새로고침을 해도 방문자 수 데이터가 초기화되지 않도록 구현.
+- **데이터 저장 및 분석:** 데이터를 서버에 안전하게 저장하고, 추후 분석이 가능하도록 함.
+- **데이터 시각화:** 방문자 수 데이터를 시각화하여 이해하기 쉽게 표현.
+- **서버리스 아키텍처 활용:** AWS Lambda와 API Gateway를 활용해 효율적이고 확장 가능한 서버리스 백엔드를 구현.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## 개발 환경
+- FrontEnd
+    - React
+        - react-chartjs-2
+        - Framer-Motion
+- Backend
+    - AWS Lambda
+    - API Gateway
+- Database
+    - DynamoDB
+- CI/CD
+    - Github Pages
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 채택 이유
+- **React:**
+    - 컴포넌트 기반 아키텍처를 통해 유지보수성과 재사용성을 극대화하여 효율적인 UI 개발 가능.
+- **react-chartjs-2:**
+    - 통계 데이터를 시각화하는 차트 라이브러리로, 사용자에게 데이터를 직관적으로 이해할 수 있도록 도움을 제공.
+- **Framer Motion:**
+    - UI 애니메이션을 구현하기 위한 모션 라이브러리로, 부드럽고 생동감 있는 사용자 경험을 제공하여 UX를 향상.
+- **AWS Lambda, API Gateway, DynamoDB:**
+    - 서버리스 환경에 적합한 서비스로, 확장성과 비용 효율성을 극대화하며, 무중단 운영을 지원.
+- **GitHub pages**
+    - 코드 변경 시 정적 웹사이트 자동 배포 지원.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 후기
+- **저비용 서버리스 환경 구축 경험:** AWS 프리 티어를 활용해 무중단 서버리스 환경을 저비용으로 구축하는 경험을 쌓았습니다.
+- **지속성 및 유연성 확보:** 로컬 스토리지를 활용하여 데이터의 지속성과 유연성을 높였습니다.
+- **보안 처리 개선 필요:** 단순화된 프로세스와 제한된 사용자층으로 인해 보안이 미흡하게 설계되었습니다. 향후, 서버사이드 값 검증 후 API Key를 발급하여 데이터 수정이 가능하도록 보안 강화를 고려할 필요가 있습니다.
