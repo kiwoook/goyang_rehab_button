@@ -9,6 +9,8 @@ import { Link, useNavigate } from "react-router-dom";
 import clickSound from "../sounds/click.mp3"
 
 const API_URL = process.env.REACT_APP_URL;
+const API_KEY = process.env.REACT_APP_AWS_API_KEY;
+const API_PASSWORD = process.env.REACT_APP_PASSWORD
 
 const Score = styled.div`
   position: absolute;
@@ -130,10 +132,18 @@ const Main = () => {
   const sendNumber = async () => {
     const password = prompt("비밀번호를 입력해주세요!");
 
-    if (password === "1400") {
+    if (password === API_PASSWORD) {
       try {
         console.log(API_URL);
-        const response = await axios.post(API_URL, { number: number });
+        const response = await axios.post(
+          API_URL, 
+          { number: number },
+          {
+            headers: {
+              'x-api-key': API_KEY
+            }
+          }
+        );
         console.log("Data sent successfully:", response.data);
         alert("전송 완료!");
       } catch (error) {
@@ -147,7 +157,8 @@ const Main = () => {
 
   const onDirectDashboard = () => {
     const password = prompt("비밀번호를 입력해주세요!");
-    if (password === "1400") {
+    console.log(API_PASSWORD)
+    if (password === API_PASSWORD) {
       navigate("/dashboard");
     } else {
       alert("비밀번호 불일치!");

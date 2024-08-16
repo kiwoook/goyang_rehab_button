@@ -42,6 +42,8 @@ const DivOption = styled.div`
 `
 
 const API_URL = process.env.REACT_APP_URL;
+const API_KEY = process.env.REACT_APP_AWS_API_KEY;
+
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -87,7 +89,14 @@ const Dashboard = () => {
   // 데이터 가져오기
   const fetchData = async () => {
     try {
-      const response = await axios.get(`${API_URL}?year=${year}&month=${month}`);
+      const response =  await axios.get(
+        `${API_URL}?year=${year}&month=${month}`,
+        {
+          headers: {
+            'x-api-key': API_KEY
+          }
+        }
+      );
       setData(response.data);
       console.log("Data fetched successfully:", response.data);
     } catch (error) {
