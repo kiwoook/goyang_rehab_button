@@ -1,5 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;400&family=Suez+One&display=swap");
-a:link{
+a:link {
   text-decoration: none;
 }
 
@@ -15,6 +15,11 @@ a:link{
   background-image: url("/public/background-image.png");
   background-size: cover;
   background-position: center;
+}
+
+.survey-background {
+  height: 100vh;
+  background-color: white;
 }
 
 .ModalContainer {
@@ -68,4 +73,122 @@ a:link{
   to {
     transform: rotate(360deg);
   }
+}
+.rating {
+  margin-bottom: 3vh;
+  background-color: rgba(104, 153, 216, 0.8);
+  padding: 3vh;
+  border-radius: 2.2rem;
+  width: 60vw;
+}
+
+.age {
+  background-color: rgba(104, 153, 216, 0.8);
+  padding: 3vh;
+  border-radius: 2.2rem;
+  width: 60vw;
+}
+
+.age-button {
+  width: 47%;
+  height: 45px;
+  border-radius: 10px;
+}
+.age-button input[type="radio"] {
+  display: none;
+}
+.age-button label {
+  display: block;
+  border-radius: 10px;
+  margin: 0 auto;
+  width: 180px;
+  text-align: center;
+  height: -webkit-fill-available;
+  line-height: 45px;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.age-button input[type="radio"]:checked + label {
+  background: #184da0;
+  color: #fff;
+}
+
+.age-button label:hover {
+  color: #666;
+}
+
+/* Disabled */
+.age-button input[type="radio"] + label {
+  background: #f9fafc;
+  color: #666;
+}
+
+svg {
+  fill: rgb(255, 242, 242);
+  height: 8rem;
+  width: 8rem;
+  margin: 0.2rem;
+}
+
+#radios label {
+  position: relative;
+}
+
+.rating input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+}
+
+.rating input[type="radio"] + svg {
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.rating-label {
+  display: flex;
+  flex-direction: column; /* 수직 방향으로 정렬 */
+  align-items: center; /* 수평 중앙 정렬 */
+  cursor: pointer; /* 마우스 커서를 포인터로 변경 */
+}
+
+.rating-text {
+  margin-top: 4px; /* SVG와 텍스트 사이의 간격 */
+  font-size: 30px; /* 텍스트 크기 */
+  font-weight: bold;
+  color: #333; /* 텍스트 색상 */
+}
+
+input + svg {
+  cursor: pointer;
+}
+
+input[class="super-happy"]:hover + svg,
+input[class="super-happy"]:checked + svg,
+input[class="super-happy"]:focus + svg {
+  fill: rgb(0, 109, 217);
+}
+
+input[class="happy"]:hover + svg,
+input[class="happy"]:checked + svg,
+input[class="happy"]:focus + svg {
+  fill: rgb(0, 204, 79);
+}
+
+input[class="neutral"]:hover + svg,
+input[class="neutral"]:checked + svg,
+input[class="neutral"]:focus + svg {
+  fill: rgb(232, 214, 0);
+}
+
+input[class="sad"]:hover + svg,
+input[class="sad"]:checked + svg,
+input[class="sad"]:focus + svg {
+  fill: rgb(229, 132, 0);
+}
+
+input[class="super-sad"]:hover + svg,
+input[class="super-sad"]:checked + svg,
+input[class="super-sad"]:focus + svg {
+  fill: rgb(239, 42, 16);
 }

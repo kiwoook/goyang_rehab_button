@@ -90,7 +90,7 @@ const Dashboard = () => {
   const fetchData = async () => {
     try {
       const response =  await axios.get(
-        `${API_URL}?year=${year}&month=${month}`,
+        `${API_URL}/data?year=${year}&month=${month}`,
         {
           headers: {
             'x-api-key': API_KEY

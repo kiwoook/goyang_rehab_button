@@ -134,9 +134,8 @@ const Main = () => {
 
     if (password === API_PASSWORD) {
       try {
-        console.log(API_URL);
         const response = await axios.post(
-          API_URL, 
+          API_URL+"/data", 
           { number: number },
           {
             headers: {
@@ -165,6 +164,16 @@ const Main = () => {
     }
   };
 
+  const onDirectSurvey = () => {
+    const password = prompt("비밀번호를 입력해주세요!");
+    console.log(API_PASSWORD)
+    if (password === API_PASSWORD) {
+      navigate("/survey");
+    } else {
+      alert("비밀번호 불일치!");
+    }
+  }
+
   const onFullScreen = () => {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen();
@@ -180,6 +189,28 @@ const Main = () => {
     if (storedNumber !== null) {
       setNumber(parseInt(storedNumber));
     }
+    const fetchData = async () => {
+      try {
+        const response = await axios.post(
+          API_URL+"/data",
+          { number: number },
+          {
+            headers: {
+              'x-api-key': API_KEY,
+            },
+          }
+        );
+        console.log(response.data); // 응답 데이터 처리
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData(); // 컴포넌트가 마운트될 때 데이터 요청
+
+    const intervalId = setInterval(fetchData, 3600000); // 1시간마다 호출 (3600000ms)
+
+    return () => clearInterval(intervalId); 
   }, []);
 
   useEffect(() => {
@@ -197,8 +228,8 @@ const Main = () => {
       >
         <div className="Modal">
           <ModalButton onClick={sendNumber}>데이터 전송하기</ModalButton>
-
           <ModalButton onClick={onDirectDashboard}>대시보드 이동</ModalButton>
+          <ModalButton onClick={onDirectSurvey}>만족도 조사</ModalButton>
           <ModalButton onClick={resetNumber}>초기화</ModalButton>
           <ModalButton onClick={onFullScreen}>전체 화면</ModalButton>
         </div>
