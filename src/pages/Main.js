@@ -134,9 +134,8 @@ const Main = () => {
 
     if (password === API_PASSWORD) {
       try {
-        console.log(API_URL);
         const response = await axios.post(
-          API_URL, 
+          API_URL+"/data", 
           { number: number },
           {
             headers: {
@@ -180,6 +179,28 @@ const Main = () => {
     if (storedNumber !== null) {
       setNumber(parseInt(storedNumber));
     }
+    const fetchData = async () => {
+      try {
+        const response = await axios.post(
+          API_URL+"/data",
+          { number: number },
+          {
+            headers: {
+              'x-api-key': API_KEY,
+            },
+          }
+        );
+        console.log(response.data); // 응답 데이터 처리
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData(); // 컴포넌트가 마운트될 때 데이터 요청
+
+    const intervalId = setInterval(fetchData, 3600000); // 1시간마다 호출 (3600000ms)
+
+    return () => clearInterval(intervalId); 
   }, []);
 
   useEffect(() => {
