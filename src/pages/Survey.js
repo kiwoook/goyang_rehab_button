@@ -67,8 +67,7 @@ const Survey = () => {
         style={{
           display: "flex",
           width: "100vw",
-          height: "100vh", // 화면 전체를 차지하게 함
-          paddingTop:"5rem",
+          height: "100vh",
           justifyContent: "center",
           flexDirection: "column",
         }}
@@ -78,7 +77,7 @@ const Survey = () => {
             <div
               className="age"
               style={{
-                marginBottom: "12vh",
+                marginBottom : "5vh",
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center", // 수직 가운데 정렬

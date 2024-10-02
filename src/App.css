@@ -18,8 +18,9 @@ a:link {
 }
 
 .survey-background {
-  height: 100vh;
-  background-color: white;
+  background-image: url("/public/survey-background.jpg");
+  background-size: cover;
+  background-position: center;
 }
 
 .ModalContainer {
@@ -74,8 +75,12 @@ a:link {
     transform: rotate(360deg);
   }
 }
+
+.rating-form{
+  padding-top: 12vh;
+}
+
 .rating {
-  margin-bottom: 3vh;
   background-color: rgba(104, 153, 216, 0.8);
   padding: 3vh;
   border-radius: 2.2rem;
