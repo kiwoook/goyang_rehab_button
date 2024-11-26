@@ -6,11 +6,11 @@ import { useState } from "react";
 import { useEffect } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import clickSound from "../sounds/click.mp3"
+import clickSound from "../sounds/click.mp3";
 
 const API_URL = process.env.REACT_APP_URL;
 const API_KEY = process.env.REACT_APP_AWS_API_KEY;
-const API_PASSWORD = process.env.REACT_APP_PASSWORD
+const API_PASSWORD = process.env.REACT_APP_PASSWORD;
 
 const Score = styled.div`
   position: absolute;
@@ -129,21 +129,39 @@ const Main = () => {
     setNumber(0);
   };
 
+  const autoSendNumber = async () => {
+    try {
+      const response = await axios.post(
+        API_URL + "/data",
+        { number: number },
+        {
+          headers: {
+            "x-api-key": API_KEY,
+          },
+        }
+      );
+      console.log("방문자 수 전송 완료:", number);
+    } catch (error) {
+      console.error("Error sending data:", error);
+      alert("방문자수 저장 실패! 관리자에게 문의하세요!");
+    }
+  };
+
   const sendNumber = async () => {
     const password = prompt("비밀번호를 입력해주세요!");
 
     if (password === API_PASSWORD) {
       try {
         const response = await axios.post(
-          API_URL+"/data", 
+          API_URL + "/data",
           { number: number },
           {
             headers: {
-              'x-api-key': API_KEY
-            }
+              "x-api-key": API_KEY,
+            },
           }
         );
-        console.log("Data sent successfully:", response.data);
+        console.log("방문자 수 전송 완료:", number);
         alert("전송 완료!");
       } catch (error) {
         console.error("Error sending data:", error);
@@ -156,7 +174,7 @@ const Main = () => {
 
   const onDirectDashboard = () => {
     const password = prompt("비밀번호를 입력해주세요!");
-    console.log(API_PASSWORD)
+    console.log(API_PASSWORD);
     if (password === API_PASSWORD) {
       navigate("/dashboard");
     } else {
@@ -166,13 +184,13 @@ const Main = () => {
 
   const onDirectSurvey = () => {
     const password = prompt("비밀번호를 입력해주세요!");
-    console.log(API_PASSWORD)
+    console.log(API_PASSWORD);
     if (password === API_PASSWORD) {
       navigate("/survey");
     } else {
       alert("비밀번호 불일치!");
     }
-  }
+  };
 
   const onFullScreen = () => {
     if (!document.fullscreenElement) {
@@ -192,25 +210,26 @@ const Main = () => {
     const fetchData = async () => {
       try {
         const response = await axios.post(
-          API_URL+"/data",
+          API_URL + "/data",
           { number: number },
           {
             headers: {
-              'x-api-key': API_KEY,
+              "x-api-key": API_KEY,
             },
           }
         );
-        console.log(response.data); // 응답 데이터 처리
+        console.log("방문자 수 전송 완료", number); // 응답 데이터 처리
       } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error("Error fetching data:", error);
       }
     };
 
     fetchData(); // 컴포넌트가 마운트될 때 데이터 요청
 
     const intervalId = setInterval(fetchData, 3600000); // 1시간마다 호출 (3600000ms)
+    setInterval(autoSendNumber, 60 * 30 * 1000); // 30분마다 호출
 
-    return () => clearInterval(intervalId); 
+    return () => clearInterval(intervalId);
   }, []);
 
   useEffect(() => {
@@ -219,7 +238,6 @@ const Main = () => {
 
   return (
     <>
-  
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={showModal}
